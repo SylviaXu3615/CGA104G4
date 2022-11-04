@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- 響應式頁面 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- GOOGLEFONT -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&display=swap"
+          rel="stylesheet">
+
+    <!-- 下面是這個模板需要的css請勿改動 若有排版需要請直接寫新的css蓋過去就可以了 -->
+    <link rel="stylesheet" type="text/css" href="../resources/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="../resources/css/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="../resources/css/slick.css">
+    <link rel="stylesheet" type="text/css" href="../resources/css/slick-theme.css">
+    <link rel="stylesheet" type="text/css" href="../resources/css/flaticon.css">
+    <link rel="stylesheet" type="text/css" href="../resources/css/style.css">
+    <link rel="stylesheet" type="text/css" href="../resources/css/nav.css">
+    <!-- 請將覆蓋用的css放置此註解下方 -->
+
+    <!-- 已經預載入jquery了有需要jquery可以直接使用 -->
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+
+    <!-- 頁籤顯示的title -->
+    <title>空白模板</title>
+
+
+</head>
+
+<body>
+<script src="../resources/js/membernav.js"></script>
+<!-- 上面是NAV載入 請一定要放在BODY開始的位置 -->
+
+<!--下面可自由新增內容 -->
+<div class="wrapper">
+    <section class="pager-section text-center" style="padding-bottom: 30px; padding-top: 140px;">
+        <div class="container">
+            <div class="pager-head">
+                <h2 style="color: #ffa500; font-size: 2rem; font-weight: 400;">會員註冊</h2>
+            </div>
+            <!--pager-head end-->
+        </div>
+    </section>
+    <!--pager-section end-->
+
+    <section class="">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-7">
+                    <div class="delitaste-form text-center">
+                        <!-- <div class="lg-text">
+                                <h3>Sign Up With</h3>
+                                <ul class="social">
+                                    <li><a class="facebook" href="#" title=""><i class="fab fa-facebook-f"></i></a>
+                                    </li>
+                                    <li><a class="linkedin" href="#" title=""><i class="fab fa-linkedin"></i></a>
+                                    </li>
+                                    <li><a class="twitter" href="#" title=""><i class="fab fa-twitter"></i></a></li>
+                                    <li><a class="google" href="#" title=""><i class="fab fa-google"></i></a></li>
+                                </ul>
+                            </div>
+                            lg-text end
+                            <div class="or">
+                                <span>or</span>
+                            </div> -->
+                        <span id="dataerror"></span>
+                        <div>
+                            <h4 class="text-left" style="font-size: 1rem;">帳號:(請輸入信箱)</h4>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <input type="email" name="memEmail" placeholder="信箱*" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                            <span id="memEmailerror"></span>
+
+                            <h4 class="text-left" style="font-size: 1rem;">密碼:(輸入8~20英文大小寫數字混合)</h4>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input type="password" name="memPwd" placeholder="密碼*" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input type="password" name="cfMemPwd" placeholder="確認密碼*"
+                                               class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                            <span id="memPwderror"></span>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input type="text" name="memName" placeholder="姓名*" class="form-control">
+                                    </div>
+                                    <!--form-group end-->
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input type="text" name="memMobile" placeholder="手機號碼*"
+                                               class="form-control">
+                                    </div>
+                                    <!--form-group end-->
+                                </div>
+                                <div style="display: flex; gap: 16rem">
+                                    <span style="margin-left: 2rem" id="memNameerror"></span>
+                                    <span id="memMobileerror"></span>
+                                </div>
+
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <select style="height: 55px;" class="form-control" name="memCity"
+                                                id="memCity">
+                                            <option disabled selected>縣市</option>
+                                        </select>
+                                    </div>
+                                    <!--form-group end-->
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <select style="height: 55px;" class="form-control" name="memDist"
+                                                id="memDist">
+                                            <option disabled selected>鄉鎮區</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <input type="text" placeholder="路段" class="form-control" name="memAdr">
+                                    </div>
+                                    <!--form-group end-->
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <button type="submit" class="btn-default w-100" style="outline: none;" id="signup">
+                                        註冊
+                                        <span></span></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+
+<!-- 下面是這個版需要的js可添加各自需要的js檔-->
+<script src="../resources/js/bootstrap.min.js"></script>
+<script src="../resources/js/slick.js"></script>
+<script src="../resources/js/scripts.js"></script>
+<script src="../resources/js/isotope.js"></script>
+<script>
+    //網頁開啟立即執行的方法
+    getcityselector();
+
+    //儲存縣市資料用
+    let locat;
+
+    //取得縣市資料
+    function getcityselector() {
+        fetch("../resources/js/taiwan_districts.json")
+            .then(response => response.json())
+            .then(data => {
+                locat = data;
+                data.forEach(e => {
+                    $("select#memCity").append(`<option value="${e.name}">${e.name}</option>`);
+                })
+            })
+    }
+
+    //縣市選擇後出現對應的市區
+    $('select#memCity').change(function () {
+        locat.forEach(e => {
+            let memDist;
+            if (e.name === $("select#memCity").val()) {
+                memDist = e.districts;
+                $("select#memDist").empty();
+                $("select#memDist").append("<option disabled selected>鄉鎮區</option>");
+                memDist.forEach(e => {
+                    $("select#memDist").append(`<option  value="${e.name}">${e.name}</option>`);
+                })
+            }
+        })
+    })
+
+    $("button#signup").click(function (e) {
+        e.preventDefault();
+        let pwd = $("input[name='memPwd']").val();
+        let cfpwd = $("input[name='cfMemPwd']").val();
+        if (pwd !== cfpwd) {
+            $("#memPwderror").html("<p style='color:red;'>確認密碼與密碼不相符請重新確認</p>");
+            return;
+        }
+        if (pwd.trim().length === 0 || cfpwd.trim().length === 0) {
+            $("#memPwderror").html("<p style='color:red;'>密碼與確認密碼請勿空白</p>");
+            return;
+        }
+        $("#memPwderror").html("");
+        insertData();
+
+    })
+
+    async function insertData() {
+        let formData = new FormData();
+        formData.append('action', 'signup');
+        formData.append('memEmail', $("input[name='memEmail']").val());
+        formData.append('memPwd', $("input[name='memPwd']").val());
+        formData.append('memName', $("input[name='memName']").val());
+        formData.append('memMobile', $("input[name='memMobile']").val());
+        formData.append('memCity', $("select[name='memCity']").val());
+        formData.append('memDist', $("select[name='memDist']").val());
+        formData.append('memAdr', $("input[name='memAdr']").val());
+
+        let path = window.location.pathname;
+        let webCtx = path.substring(0, path.indexOf('/', 1));
+        let url = webCtx + "/member/memberlogin.do";
+
+        try {
+            let response = await fetch(url, {method: 'post', body: formData}).then(e => e.json());
+            if (response.state) {
+                $("dataerror").html("");
+                $("#memEmailerror").html("");
+                $("#memPwderror").html("");
+                $("#memNameerror").html("");
+                $("#memMobileerror").html("");
+                $("input[name='memEmail']").val("");
+                $("input[name='memPwd']").val("");
+                $("input[name='memName']").val("");
+                $("input[name='memMobile']").val("");
+                $("select#memCity").empty();
+                $("select#memCity").append("<option disabled selected>縣市</option>")
+                locat.forEach(e => {
+                    $("select#memCity").append(`<option value="${e.name}">${e.name}</option>`);
+                });
+                $("select#memDist").empty();
+                $("select#memDist").append("<option disabled selected>鄉鎮區</option>");
+                $("input[name='memAdr']").val("");
+                $("input[name='cfMemPwd']").val("");
+                await alert("新增成功");
+                window.location.href = "./index.html";
+            } else {
+                throw response;
+            }
+
+        } catch (response) {
+            if (response.memEmailerror) {
+                $("#memEmailerror").html(`<p style='color:red;'>${response.memEmailerror}</p>`);
+            }
+            if (response.memPwderror) {
+                $("#memPwderror").html(`<p style='color:red;'>${response.memPwderror}</p>`);
+            }
+            if (response.memNameerror) {
+                $("#memNameerror").html(`<p style='color:red;'>${response.memNameerror}</p>`);
+            }
+            if (response.memMobileerror) {
+                $("#memMobileerror").html(`<p style='color:red;'>${response.memMobileerror}</p>`);
+            }
+            if (response.dataError) {
+                $("dataerror").html(`<p style='color:red;'>${response.dataError}</p>`);
+            }
+        }
+    }
+</script>
+</body>
+
+</html>

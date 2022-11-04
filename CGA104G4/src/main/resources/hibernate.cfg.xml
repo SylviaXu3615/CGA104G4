@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<!-- Version 8 MySQL hiberante-cfg.xml example for Hibernate 5 -->
+<hibernate-configuration>
+    <session-factory>
+        <!--直接設定連線要用下面設定-->
+        <!--資料庫MYSQL8.0驅動-->
+<!--        <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>-->
+        <!--資料庫PORT與名字-->
+<!--        <property name="connection.url">jdbc:mysql://localhost:3306/FOOD</property>-->
+        <!--資料庫帳號-->
+<!--        <property name="connection.username">你的帳號</property>-->
+        <!--資料庫密碼-->
+<!--        <property name="connection.password">你的密碼</property>-->
+
+        <!--使用連線池用下面(要對應CONTEXT檔的JNDI)-->
+<!--        <property name="hibernate.connection.datasource">java:comp/env/jdbc/FOOD</property>-->
+
+        <property name="current_session_context_class">thread</property>
+        
+        <!--使用HiKariCP並直接設定-->
+        <property name="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/FOOD</property>
+        <property name="hibernate.connection.username">root</property>
+        <property name="hibernate.connection.password">password</property>
+        <property name="hibernate.connection.provider_class">com.zaxxer.hikari.hibernate.HikariConnectionProvider</property>
+        <property name="hibernate.hikari.minimumIdle">5</property>
+        <property name="hibernate.hikari.maximumPoolSize">10</property>
+        <property name="hibernate.hikari.idleTimeout">30000</property>
+        
+
+        <!--下面可有可無-->
+        <!--資料庫方言-->
+        <property name="dialect">org.hibernate.dialect.MySQL8Dialect</property>
+        <!--執行時顯示SQL語句-->
+        <property name="show_sql">true</property>
+        <!--提高執行時顯示SQL語句可讀性-->
+        <property name="format_sql">true</property>
+
+
+        <mapping class="com.member.model.MemberVO" />
+    </session-factory>
+</hibernate-configuration>

@@ -1,0 +1,39 @@
+	/*
+  	Flaticon icon font: Flaticon
+  	Creation date: 03/08/2020 16:25
+  	*/
+
+@font-face {
+  font-family: "Flaticon";
+  src: url("../font/Flaticon.eot");
+  src: url("../font/Flaticon.eot") format("embedded-opentype"),
+       url("../font/Flaticon.woff2") format("woff2"),
+       url("../font/Flaticon.woff") format("woff"),
+       url("../font/Flaticon.ttf") format("truetype"),
+       url("http://my-templates.online/deli-taste/assets/webfonts/Flaticon.svg") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: "Flaticon";
+    src: url("http://my-templates.online/deli-taste/assets/webfonts/Flaticon.svg") format("svg");
+  }
+}
+
+[class^="flaticon-"]:before, [class*=" flaticon-"]:before,
+[class^="flaticon-"]:after, [class*=" flaticon-"]:after {   
+  font-family: Flaticon;
+  font-size: 20px;
+  font-style: normal;
+}
+
+.flaticon-pin:before { content: "\f100"; }
+.flaticon-clock:before { content: "\f101"; }
+.flaticon-phone:before { content: "\f102"; }
+.flaticon-email:before { content: "\f103"; }
+.flaticon-eye:before { content: "\f104"; }
+.flaticon-send:before { content: "\f105"; }
+.flaticon-search:before { content: "\f106"; }
+.flaticon-close:before { content: "\f107"; }

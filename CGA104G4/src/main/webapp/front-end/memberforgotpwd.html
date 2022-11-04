@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- 響應式頁面 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- GOOGLEFONT -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&display=swap"
+          rel="stylesheet">
+
+    <!-- 下面是這個模板需要的css請勿改動 若有排版需要請直接寫新的css蓋過去就可以了 -->
+    <link rel="stylesheet" type="text/css" href="../resources/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="../resources/css/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="../resources/css/slick.css">
+    <link rel="stylesheet" type="text/css" href="../resources/css/slick-theme.css">
+    <link rel="stylesheet" type="text/css" href="../resources/css/flaticon.css">
+    <link rel="stylesheet" type="text/css" href="../resources/css/style.css">
+    <link rel="stylesheet" type="text/css" href="../resources/css/nav.css">
+    <!-- 已經預載入jquery了有需要jquery可以直接使用 -->
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+
+    <!-- 請將覆蓋用的css放置此註解下方 -->
+
+
+    <!-- 頁籤顯示的title -->
+    <title>忘記密碼</title>
+
+
+</head>
+
+<body>
+<script src="../resources/js/membernav.js"></script>
+<!-- 上面是NAV載入 請一定要放在BODY開始的位置 -->
+<!--下面可自由新增內容 -->
+<div class="wrapper">
+    <section class="pager-section text-center" style="padding-bottom: 30px; padding-top: 140px;">
+        <div class="container">
+            <div class="pager-head">
+                <h2 style="color: #ffa500; font-size: 2rem; font-weight: 400;">忘記密碼</h2>
+            </div>
+            <!--pager-head end-->
+        </div>
+    </section>
+    <!--pager-section end-->
+    <section>
+        <div class="container memberlogin">
+            <div class="row justify-content-center">
+                <div class="col-lg-5">
+                    <div class="delitaste-form text-center">
+                        <div>
+                            <h4 class="text-left" style="font-size: 1rem;">帳號:(請輸入註冊信箱進行驗證與接收新密碼)</h4>
+                            <div class="form-group" id="emaildiv">
+                                <input type="email" name="memEmail" id="memEmail" placeholder="帳號(信箱)*"
+                                       class="form-control">
+                            </div>
+                            <span id="memEmailerror"></span>
+                            <div class="form-group">
+                                <button type="submit" class="btn-default w-100" style="outline: none;"
+                                        id="forgetPwd">
+                                    傳送新密碼
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+
+<!-- 下面是這個版需要的js可添加各自需要的js檔-->
+<script src="../resources/js/bootstrap.min.js"></script>
+<script src="../resources/js/slick.js"></script>
+<script src="../resources/js/scripts.js"></script>
+<script src="../resources/js/isotope.js"></script>
+
+
+<script>
+
+    $("#forgetPwd").click(
+        async function () {
+            let email = $("#memEmail").val();
+            if (email === null || email.trim().length === 0) {
+                $("memEmailerror").html("<p style='color:red;'>帳號請勿空白</p>");
+                return;
+            }
+            let formData = new FormData();
+            formData.append('action', 'forgetPwd');
+            formData.append("memEmail", email);
+
+            let path = window.location.pathname;
+            let webCtx = path.substring(0, path.indexOf('/', 1));
+            let url = webCtx + "/member/memberlogin.do";
+            let reponse = await fetch(url, {method: 'post', body: formData}).then(e => e.json());
+
+            if (!reponse.state) {
+                $("memEmailerror").html(`<p style='color:red;'>${reponse.memNoFounderror}</p>`);
+                return;
+            }
+
+            $("#memEmail").html("");
+            alert("已寄送新密碼至信箱，請盡速登入完成密碼更改作業");
+            window.location.href = "./memberlogin.html";
+
+        })
+
+
+</script>
+</body>
+
+</html>

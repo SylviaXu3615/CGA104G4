@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- 響應式頁面 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- GOOGLEFONT -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&display=swap"
+        rel="stylesheet">
+
+    <!-- 下面是這個模板需要的css請勿改動 若有排版需要請直接寫新的css蓋過去就可以了 -->
+    <link rel="stylesheet" type="text/css" href="../resources/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="../resources/css/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="../resources/css/slick.css">
+    <link rel="stylesheet" type="text/css" href="../resources/css/slick-theme.css">
+    <link rel="stylesheet" type="text/css" href="../resources/css/flaticon.css">
+    <link rel="stylesheet" type="text/css" href="../resources/css/style.css">
+    <link rel="stylesheet" type="text/css" href="../resources/css/nav.css">
+    <!-- 請將覆蓋用的css放置此註解下方 -->
+
+    <!-- 已經預載入jquery了有需要jquery可以直接使用 -->
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+
+    <!-- 頁籤顯示的title -->
+    <title>會員登入</title>
+
+
+
+</head>
+
+<body>
+    <script src="../resources/js/membernav.js"></script>
+    <!-- 上面是NAV載入 請一定要放在BODY開始的位置 -->
+    <!--下面可自由新增內容 -->
+    <div class="wrapper">
+        <section class="pager-section text-center">
+            <div class="container">
+                <div class="pager-head">
+                    <ul>
+                        <li>
+                            <button class="logintitle1 -on" style="outline: none;">會員登入</button>
+                        </li>
+                    </ul>
+                </div>
+                <!--pager-head end-->
+            </div>
+        </section>
+        <!--pager-section end-->
+        <section>
+            <div class="container memberlogin">
+                <div class="row justify-content-center">
+                    <div class="col-lg-5">
+                        <div class="delitaste-form text-center">
+                            <!-- <div class="lg-text">
+                                <ul class="social">
+                                    <li><a class="facebook" href="#" title=""><i class="fab fa-facebook-f"></i></a></li>
+                                    <li><a class="linkedin" href="#" title=""><i class="fab fa-linkedin"></i></a></li>
+                                    <li><a class="twitter" href="#" title=""><i class="fab fa-twitter"></i></a></li>
+                                    <li><a class="google" href="#" title=""><i class="fab fa-google"></i></a></li>
+                                </ul>
+                            </div> -->
+
+                            <!--lg-text end-->
+                            <!-- <div class="or">
+                                <span>or</span>
+                            </div> -->
+                            <div>
+                                <div class="form-group" id="emaildiv">
+                                    <input type="email" name="memEmail" id="memEmail" placeholder="帳號(信箱)*" class="form-control">
+                                </div>
+                                <!--form-group end-->
+                                <div class="form-group" id="passworddiv">
+                                    <input type="password" name="memPwd" id="memPwd" placeholder="密碼*" class="form-control">
+                                </div>
+                                <!--form-group end-->
+                                <div class="form-group">
+                                    <button type="submit" class="btn-default w-100" style="outline: none;"
+                                            id="sumbitbutton" >
+                                        會員登入
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="btm-tx text-left" style="margin-bottom: 3rem;">
+                                <span>尚未註冊? <a href="membersignup.html">進行註冊</a></span>
+                                <a href="./memberforgotpwd.html">忘記密碼? </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <!-- 下面是這個版需要的js可添加各自需要的js檔-->
+    <script src="../resources/js/bootstrap.min.js"></script>
+    <script src="../resources/js/slick.js"></script>
+    <script src="../resources/js/scripts.js"></script>
+    <script src="../resources/js/isotope.js"></script>
+
+    <script>
+        $("#sumbitbutton").click(function (){
+            let email =  $("#memEmail").val();
+            let password = $("#memPwd").val();
+            $("#emailError").remove();
+            $("#PwdError").remove();
+            if(!email){
+                let p = document.createElement("p");
+                p.setAttribute("id","emailError")
+                p.style.color = "red";
+                p.textContent = "請輸入帳號";
+                $("#emaildiv").append(p);
+            }
+            if(!password){
+                let p = document.createElement("p");
+                p.setAttribute("id","PwdError")
+                p.style.color = "red";
+                p.textContent = "請輸入密碼";
+                $("#passworddiv").append(p);
+            }
+            if(email&&password){
+                sendData(email,password);
+            }
+        })
+
+        async function sendData(email,password) {
+            let formData = new FormData();
+            formData.append('action','login');
+            formData.append("memEmail",email);
+            formData.append("memPwd",password);
+
+
+            let path = window.location.pathname;
+            let webCtx = path.substring(0, path.indexOf('/', 1));
+            let url = webCtx+"/member/memberlogin.do";
+                // "?action=login&memEmail=" +email+"&memPwd="+password;
+
+            let promise = await fetch(url,{ method: 'post',body:formData});
+            let  response = await promise.json();
+
+            $("#emailError").remove();
+            $("#PwdError").remove();
+            $("#memNotFoundError").remove();
+
+            if(!response.state){
+                if(response.memEmailerror){
+                    let p = document.createElement("p");
+                    p.setAttribute("id","emailError")
+                    p.style.color = "red";
+                    p.textContent = response.memEmailerror;
+                    $("#emaildiv").append(p);
+                }
+                if(response.memPwderror){
+                    let p = document.createElement("p");
+                    p.setAttribute("id","PwdError")
+                    p.style.color = "red";
+                    p.textContent = response.memPwderror;
+                    $("#passworddiv").append(p);
+                }
+                if(response.memNotFoundError){
+                    let p = document.createElement("p");
+                    p.setAttribute("id","memNotFoundError")
+                    p.style.color = "red";
+                    p.textContent = response.memNotFoundError;
+                    $("#emaildiv").prepend(p);
+                }
+                return;
+            }
+                if(response.location){
+                    window.location.href = `${response.location}`;
+                }else {
+                    window.location.href="./index.html";
+                }
+
+        }
+    </script>
+</body>
+
+</html>
