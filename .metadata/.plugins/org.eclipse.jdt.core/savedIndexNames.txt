@@ -1,0 +1,1 @@
+INDEX VERSION 1.131+C:\CGA104G4_workspace\.metadata\.plugins\org.eclipse.jdt.core
