@@ -1,6 +1,1 @@
 INDEX VERSION 1.4+C:\CGA104G4_workspace\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
-2810540566.index
-805373440.index
-796808390.index
-2975972931.index
-1158266601.index
